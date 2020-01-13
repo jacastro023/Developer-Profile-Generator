@@ -3,7 +3,7 @@ const path = require("path");
 const inquirer = require("inquirer");
 const axios = require("axios");
 const open = require("open");
-const convertfactory = require("electron-html-to");
+const convertFactory = require("electron-html-to");
 // const api = require("./apis");
 // const generateHTML = require("./generatehtml");
 const colors = {
@@ -52,7 +52,7 @@ inquirer.prompt([
 
 
     axios.get(queryUrl).then(res => {
-        console.log(res);
+        // console.log(res);
 
         const pic = res.data.avatar_url;
         const name = res.data.name;
@@ -217,20 +217,20 @@ inquirer.prompt([
                     </style>
             </head>
         <body>
-        <div class="container-fluid text-center wrapper">
-        <div class="photo-header">
+        <div class="wrapper">
+        <div style="padding-bottom:60px" class="photo-header">
           <img class="photo-header img" src="${pic}" height="200" width="200">
         </div>
-        <div>
+        <div style="margin-top: 45px;" class="photo-header">
           <h1>Hi!
             <br>
             My name is ${name}</h1>
         </div>
     <br>
-        <div class="row">
-            <a href="https://www.google.com/maps/place/${gitLoco}">${gitLoco}</a> 
-            <a href="${gitURL}">GitHub</a>
-            <a href="${gitBlog}">Blog</a>
+        <div style="justify-content:center;" class="row photo-header">
+            <a style="padding-right:15px" href="https://www.google.com/maps/place/${gitLoco}">${gitLoco}</a> 
+            <a style="padding-right:15px" href="${gitURL}">GitHub</a>
+            <a style="padding-right:15px" href="${gitBlog}">Blog</a>
         </div>
       </div>
       <br>
@@ -272,7 +272,9 @@ inquirer.prompt([
                 return console.log(err);
             }
             console.log("worked");
+
         })
 
-    });
+
+    })
 });
